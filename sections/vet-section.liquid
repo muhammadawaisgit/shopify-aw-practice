@@ -1,0 +1,37 @@
+<div class="section section--{{ section.settings.section_width }}">
+    <div class="spacing-style" style="">
+
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "vet-card",
+        "tag": "section",
+        "class": "section-wrapper",
+        "settings": [
+            {
+                "type": "select",
+                "id": "section_width",
+                "label": "t:settings.width",
+                "options": [
+                    {
+                    "value": "page-width",
+                    "label": "t:options.page"
+                    },
+                    {
+                    "value": "full-width",
+                    "label": "t:options.full"
+                    }
+                ],
+                "default": "page-width"
+            },
+        ],
+        "presets": [
+            {
+                "name": "vet-card",
+                "category": "Custom Sections"
+            }
+        ]
+    }
+{% endschema %}
