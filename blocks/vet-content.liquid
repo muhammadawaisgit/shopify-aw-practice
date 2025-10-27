@@ -1,0 +1,113 @@
+<style>
+  .vet-content-container {
+    display:flex;
+    flex-direction:column;
+    width: 50%;
+  }
+  .vet-content {
+    display:flex;
+    flex-direction:column;
+  }
+
+  @media (max-width:768px){
+    .vet-content-container{
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="vet-content"
+  style="
+    padding-top:{{block.settings.padding_top}}px;
+    padding-right:{{block.settings.padding_right}}px;
+    padding-bottom:{{block.settings.padding_bottom}}px;
+    padding-left:{{block.settings.padding_left}}px;
+    gap:{{block.settings.gap}}px;
+    {%- if block.settings.background == true %}
+        background:{{ block.settings.background_color }};
+    {%- endif -%}
+  "
+  {{ block.shopify_attributes }}
+>
+    {% content_for 'block', type: 'vet_name', id: 'vet-name' %}
+    {% content_for 'block', type: 'vet-headline', id: 'vet-headline' %}
+    {% content_for 'block', type: 'vet-desc', id: 'vet-description' %}
+    {% content_for 'block', type: 'vet-button', id: 'vet-button' %}
+</div>
+
+{% schema %}
+{
+  "name": "Vet Content",
+  "class": "vet-content-container",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "checkbox",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "visible_if": "{{ section.settings.background == true }}"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}

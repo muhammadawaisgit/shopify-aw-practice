@@ -1,0 +1,31 @@
+<div
+  style="
+    font-size:{{ block.settings.size }}px;
+    font-weight:{{ block.settings.weight }};
+    color:{{ block.settings.color }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {{ block.settings.name }}
+</div>
+
+{% schema %}
+{
+  "name": "Vet Name",
+  "settings": [
+    { "type": "inline_richtext", "id": "name", "label": "Text", "default": "Dr. Ernie Sanderson" },
+    { "type": "range", "id": "size", "label": "Font Size", "min": 0, "max": 100, "unit": "px", "default": 18 },
+    {
+      "type": "range",
+      "id": "weight",
+      "label": "Weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "default": 600
+    },
+    { "type": "color", "id": "color", "label": "Color", "default": "#FEBB65" }
+  ]
+}
+{% endschema %}

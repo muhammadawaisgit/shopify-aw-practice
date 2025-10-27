@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
@@ -61,6 +62,7 @@
       "settings": {
         "media_type_1": "image",
         "media_type_2": "image",
+        "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -82,6 +84,111 @@
         "reflection_opacity": 75,
         "padding-block-start": 100,
         "padding-block-end": 72
+      }
+    },
+    "vet_section_eV9dMT": {
+      "type": "vet-section",
+      "blocks": {
+        "vet-image": {
+          "type": "vet-image",
+          "static": true,
+          "settings": {
+            "image_picker": "shopify://shop_images/pexels-mikhail-nilov-7469222_1.jpg",
+            "vet_image_radius": 14,
+            "badge": false,
+            "position_vertical": "top",
+            "position_horizontal": "left",
+            "badge_vertical_spacing": 10,
+            "badge_horizontal_spacing": 10
+          },
+          "blocks": {}
+        },
+        "vet_content": {
+          "type": "vet-content",
+          "static": true,
+          "settings": {
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "background": false,
+            "background_color": "",
+            "gap": 16
+          },
+          "blocks": {
+            "vet-name": {
+              "type": "vet_name",
+              "static": true,
+              "settings": {
+                "name": "Dr. Ernie Sanderson",
+                "size": 18,
+                "weight": 600,
+                "color": "#febb65"
+              },
+              "blocks": {}
+            },
+            "vet-headline": {
+              "type": "vet-headline",
+              "static": true,
+              "settings": {
+                "headline": "Veterinarian-Approved",
+                "size": 26,
+                "weight": 600,
+                "color": "#000000"
+              },
+              "blocks": {}
+            },
+            "vet-description": {
+              "type": "vet-desc",
+              "static": true,
+              "settings": {
+                "desc": "All products from Dr. Ernie's are vetted and approved by a qualified veterinarian, ensuring top-quality care for your pet.",
+                "size": 16,
+                "weight": 400,
+                "color": "#a4a4a4"
+              },
+              "blocks": {}
+            },
+            "vet-button": {
+              "type": "vet-button",
+              "static": true,
+              "settings": {
+                "label": "View Products",
+                "link": "",
+                "alignment": "left",
+                "font_size": 16,
+                "font_weight": 600,
+                "padding_vertical": 14,
+                "padding_horizontal": 50,
+                "border_radius": 6,
+                "border_width": 0,
+                "bg_color": "#000000",
+                "bg_color_hover": "#f5a93f",
+                "text_color": "#ffffff",
+                "text_color_hover": "#000000",
+                "border_color": "#000000",
+                "mobile_alignment": "center",
+                "mobile_font_size": 16,
+                "mobile_padding_vertical": 16,
+                "mobile_padding_horizontal": 50,
+                "mobile_border_radius": 6
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "name": "Vet Card Section ",
+      "settings": {
+        "section_width": "page-width",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "padding_left": 0,
+        "padding_right": 0,
+        "background": false,
+        "background_color": "",
+        "gap": 20
       }
     },
     "product_list_fa6P9H": {
@@ -281,6 +388,7 @@
   },
   "order": [
     "hero_jVaWmY",
+    "vet_section_eV9dMT",
     "product_list_fa6P9H"
   ]
 }

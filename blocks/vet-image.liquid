@@ -1,0 +1,143 @@
+<style>
+    .vet-image-container {
+        position: relative;
+        width: 50%;
+    }
+    .vet-badge-img {
+        position: absolute;
+        max-width: 100px;
+    }
+
+    @media (max-width:768px){
+      .vet-image-container{
+        width: 100%;
+      }
+    }
+</style>
+
+<img
+    {{ block.shopify_attributes }}
+    style="border-radius:{{block.settings.vet_image_radius}}px ;"
+    src="{{ block.settings.image_picker | image_url }}"
+    alt="Vet Image"
+    width="100%"
+    height="250px"
+>
+{% if block.settings.badge == true %}
+<img
+    class="vet-badge-img"
+    style="
+        top:{% if block.settings.position_vertical == "top" %} {{block.settings.badge_vertical_spacing}}px {% else %} auto {% endif %};
+        bottom:{% if block.settings.position_vertical == "bottom" %} {{block.settings.badge_vertical_spacing}}px {% else %} auto {% endif %};
+        left:{% if block.settings.position_horizontal == "left" %} {{block.settings.badge_horizontal_spacing}}px {% else %} auto {% endif %};
+        right:{% if block.settings.position_horizontal == "right" %} {{block.settings.badge_horizontal_spacing}}px {% else %} auto {% endif %};
+    "
+    src="{{ block.settings.badge_image_picker | image_url }}"
+    alt="Vet Image"
+    width="100%"
+    height="50px"
+>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Vet Image",
+  "class": "vet-image-container",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "vet_image_radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "badge",
+      "label": "Enable"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image_picker",
+      "label": "Badge Image",
+      "visible_if": "{{ block.settings.badge == true }}"
+    },
+    {
+      "type": "header",
+      "content": "Badge position",
+      "visible_if": "{{ block.settings.badge == true }}"
+    },
+    {
+      "type": "select",
+      "id": "position_vertical",
+      "label": "Vertical Position",
+      "options": [
+        {
+          "label": "Top",
+          "value": "top"
+        },
+        {
+          "label": "Bottom",
+          "value": "bottom"
+        }
+      ],
+      "visible_if": "{{ block.settings.badge == true }}"
+    },
+    {
+      "type": "select",
+      "id": "position_horizontal",
+      "label": "Horizontal Position",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "visible_if": "{{ block.settings.badge == true }}"
+    },
+    {
+      "type": "header",
+      "content": "Badge Spacing",
+      "visible_if": "{{ block.settings.badge == true }}"
+    },
+    {
+      "type": "range",
+      "id": "badge_vertical_spacing",
+      "label": "Vertical",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "visible_if": "{{ block.settings.badge == true }}",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "badge_horizontal_spacing",
+      "label": "Horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "visible_if": "{{ block.settings.badge == true }}",
+      "default": 10
+    }
+  ]
+}
+{% endschema %}
