@@ -1,0 +1,174 @@
+<style>
+  .vet-card-container {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width:768px) {
+    .vet-card-container {
+      flex-direction:column;
+    }
+  }
+</style>
+
+{% assign section_settings = section.settings %}
+
+<div
+  class="section section--{{ section_settings.section_width }}"
+  style="
+    {%- if section_settings.background == true %}
+        background:{{ section_settings.background_color }};
+    {%- endif -%}
+  "
+>
+  <div
+    class="vet-card-container "
+    style="
+      padding-top:{{section_settings.padding_top}}px;
+      padding-right:{{section_settings.padding_right}}px;
+      padding-bottom:{{section_settings.padding_bottom}}px;
+      padding-left:{{section_settings.padding_left}}px;
+      gap:{{section_settings.gap}}px;
+    "
+  >
+    {% content_for 'block', type: 'vet-image', id: 'vet-image' %}
+    {% content_for 'block', type: 'vet-content', id: 'vet_content' %}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "vet-card",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "checkbox",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "visible_if": "{{ section.settings.background == true }}"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Vet Card Section ",
+      "category": "Custom Sections",
+      "blocks": [
+        {
+          "type": "vet-image",
+          "id": "vet-image",
+          "static": true
+        },
+        {
+          "type": "vet-content",
+          "id": "vet_content",
+          "static": true,
+          "blocks": [
+            {
+              "type": "vet_name",
+              "id": "vet-name",
+              "static": true,
+            },
+            {
+              "type": "vet-headline",
+              "id": "vet-headline",
+              "static": true,
+            },
+            {
+              "type": "vet-desc",
+              "id": "vet-description",
+              "static": true,
+            },
+            {
+              "type": "vet-button",
+              "id": "vet-button",
+              "static": true,
+            },
+          ]
+          
+        },
+      ]
+    }
+  ]
+}
+{% endschema %}
